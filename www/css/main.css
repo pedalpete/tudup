@@ -1,0 +1,183 @@
+body {
+	font-family: 'Open Sans',arial, trebuchet;
+}
+.snap-drawers {
+	background-color: #333;
+}
+.snap-content {
+	background-color: #DEDEDE;
+}
+
+#content {
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+}
+
+#content > div:not(#header):nth-child(n+1){
+	padding-top: 40px;
+}
+
+
+.video-wrapper {
+	overflow: scroll;
+	position: absolute;
+	top:44px;
+	bottom:30px;
+	left:0px;
+	right:0px;
+}
+
+.header-bar {
+	background-color: #fff;
+	color: #D3D3D3;
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 10;
+	height: 44px;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+.hamburger {
+	float: left;
+	width: 30px;
+}
+
+.hamburger hr {
+	background-color: #D3D3D3;
+	height: 2px;
+	margin: 6px 0px;
+	border-style: solid
+}
+
+.header-bar .category {
+	text-align: center;
+	float: left;
+	position: absolute;
+	width: 100%;
+	margin: 5px auto;
+}
+
+.start {
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.start, .start li img {
+	max-width: 90%;
+}
+
+.start li:nth-child(2):after{
+	content: 'or';
+	display: block;
+	text-align: center;
+}
+
+.get-more-content {
+	text-align: center;
+	width: 100%;
+	color: #DEDEDE;
+	font-size: 16pt;
+}
+
+.more-shows {
+	padding: 5px;
+	background-color: #479ED7;
+}
+
+.more-shows span {
+	font-size: 8pt;
+}
+
+.show-categories {
+	padding: 5px;
+	background-color: #1E9185;
+
+}
+
+.video {
+	padding: 3px;
+    -webkit-column-break-inside:avoid;
+}
+
+.video .title {
+	background-color: #888;
+	color: #fff;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 8px;
+	max-width: 320px;
+}
+
+.video .img, .selected iframe {
+	max-width: 100%;
+	max-height: 100%;
+	height: 200px;
+	min-width: 320px;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+/* classes for hiding and showing selected content */
+.video .desc, .video .close {
+	height: 0px;
+	overflow: hidden;
+	width: 100%;
+	transition: height 1.5s ease;
+}
+
+
+/* classes for when a video has been clicked */
+
+.selected .desc {
+	height: auto;
+}
+
+.selected .img {
+	display: none;
+}
+.selected iframe {
+	
+}
+/* layout for tablet or larger */
+@media (min-width: 600px) {
+	.videos {
+		-webkit-columns: 5px 3;
+		max-width: 900px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.video .img {
+		background-size: contain;
+	}
+
+}
+
+/* layout for categories */
+
+ul {
+	list-style-type: none;
+	color: #888;
+	margin: 6px;
+	padding:0;
+	font-weight: 300;
+}
+
+li {
+	
+	padding: 6px 3px;
+}
+
+/* error handling */
+
+.error {
+	background-color: #E38F25;
+	color: #333;
+	padding: 20px;
+}

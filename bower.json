@@ -1,0 +1,9 @@
+{
+	"name": "newstube",
+	"version": "0.0.1",
+	"dependencies": {
+		"angular-snap": "",
+		"angular-sanitize":"",
+		"angular-resource":""
+	}
+}

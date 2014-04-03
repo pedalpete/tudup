@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>NewsTube - a video demo app</title>
+		<script type="text/javascript" src="js/youtube-channels.js"></script>
+		<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+		<script type="text/javascript" src="bower_components/snapjs/snap.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-snap/angular-snap.min.js"></script>
+		<script type="text/javascript" src="js/tudup.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="bower_components/angular-snap/angular-snap.min.css"/>
+		<link rel="stylesheet" href="css/main.css"/>
+
+	</head>
+	<body ng-app="newstube">
+		<div class="drawers">
+			<snap-drawer>
+				
+				<ul ng-controller="channelController">
+					<li ng-repeat="channel in channels" ng-click="setChannel($index,channel.owner)">{{channel.owner}}</li>
+				</ul>
+			</snap-drawer>
+			
+			<snap-content  ng-controller="videoController" id="content">
+				<div id="header" class="header-bar">
+					<div snap-toggle>
+						<div class="hamburger">
+							<hr/>
+							<hr/>
+							<hr/>
+						</div>
+						<h4 class="category">{{channel_owner}}</h4>
+
+					</div>
+				</div>
+				<div ng-show="first_loading" class="start">
+					<ul>
+						<li>Do you want to watch</li>
+						<li ng-repeat="channel in channels" ng-click="setChannel($index,channel.owner)"><img src="{{channel.img}}"/></li>
+					</ul>
+				</div>
+				<div ng-hide="first_loading" class="video-wrapper">
+					<div class="videos">
+						<a id="top"></a>
+						<a ng-repeat="video in videos" class="video" id="{{video.id.videoId}}" ng-class="{'selected': video.active===true}"
+ng-click="selectedVideo($index)">
+							<div ng-show="error" class="error" ng-click="showCategories()">
+								:( Something went wrong getting videos. Maybe try another channel.
+							</div>
+							<div class="title">{{video.snippet.title}}</div>
+							<div class="img" ng-style="{'background-image':'url('+video.snippet.thumbnails.medium.url+')'}"></div>
+							<div ng-hide="error" ng-bind-html="video.embed | unsafe"></div>
+							<div class="desc">{{video.snippet.description}}</div>
+							<div class="close" ng-click="closeSelected()">close</div>
+						</a>
+					</div>
+					<a class="get-more-content" ng-hide="error">	
+							<div ng-click="getMoreVids()" class="more-shows" ng-show="page_token">Load More Videos</div>
+							<div  ng-hide="page_token" class="show-categories" ng-click="setChannel(other_channel.index,other_channel.owner)">
+								<span>This Channel Has No More Videos</span>
+								<h4>Check out {{other_channel.owner}} videos?</h4>
+							</div>
+						</a>
+				</div>
+			</snap-content>
+
+		</div>
+	</body>
+</html>
