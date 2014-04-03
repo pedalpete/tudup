@@ -6,7 +6,7 @@ The app is built in Angular.js.
 
 There are two versions. 
 
-[Demo Website](http://loony-coast-7225.herokuapp.com/)
+[Demo Website](http://http://pure-brushlands-8013.herokuapp.com/)
 
 As well as a Android App Version wrapped in Cordova Phonegap. 
 
