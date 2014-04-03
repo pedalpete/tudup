@@ -1,21 +1,10 @@
 'use strict'
-var newstube = angular.module('newstube', ['snap', 'ngSanitize']);
+var newstube = angular.module('newstube', ['snap']);
 
 // a simple factory to get videos from youtube
 newstube.factory('youtubeFactory', function($http, $q, $rootScope){
 	return {
 
-		youtube_api_key: '&key=AIzaSyCinLKIBHkoK04cJ37reYKflwvdtb3v2Cs',  
-		video_url: function(page_vars){
-			var url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=10&regionCode=AU&fields=items%2CnextPageToken%2CtokenPagination';
-			for(var key in page_vars){ // set your variables by going through the page_vars object
-				if(page_vars[key]){
-					url +='&'+key+'='+page_vars[key];
-				}
-			}
-			console.log(url+this.youtube_api_key+'&callback=JSON_CALLBACK');
-			return 'http://localhost:8080?callback=JSONCALLBACK'; // build the url with key and jsonp callback
-		},
 		getVideos: function(page_vars){ // go get the videos and splice the correct value
 			return {
 					"page_token": this.getToken(page_vars),
